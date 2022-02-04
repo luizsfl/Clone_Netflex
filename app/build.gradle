@@ -5,7 +5,7 @@ plugins {
 
 android {
     compileSdkVersion 29
-    buildToolsVersion '30.0.3'
+    buildToolsVersion '27.0.3'
 
     defaultConfig {
         applicationId "pedro.projeto.clonenetflex"
@@ -29,6 +29,10 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+
+    buildFeatures{
+        viewBinding true
     }
 }
 

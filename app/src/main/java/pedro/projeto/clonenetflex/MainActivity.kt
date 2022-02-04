@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
 
         Handler(Looper.getMainLooper()).postDelayed({
             AbrirTelaLogin()
-        },3000)
+        },2000)
 
     }
 
