@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="pedro.projeto.clonenetflex">
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,9 +10,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Clone_Netflex">
-        <activity android:name=".FormCadastro"></activity>
-        <activity android:name=".FormLogin" />
-        <activity android:name=".MainActivity">
+        <activity android:name="pedro.projeto.clonenetflix.FormCadastro"></activity>
+        <activity android:name="pedro.projeto.clonenetflix.FormLogin" />
+        <activity android:name="pedro.projeto.clonenetflix.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

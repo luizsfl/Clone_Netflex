@@ -1,8 +1,9 @@
-package pedro.projeto.clonenetflex
+package pedro.projeto.clonenetflix
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import pedro.projeto.clonenetflex.R
 import pedro.projeto.clonenetflex.databinding.ActivityFormLoginBinding
 import pedro.projeto.clonenetflex.databinding.ActivityMainBinding
 
@@ -21,7 +22,7 @@ class FormLogin : AppCompatActivity() {
         supportActionBar!!.hide()
 
         binding.txtTelaCadastro.setOnClickListener{
-            val intent = Intent(this,FormCadastro::class.java)
+            val intent = Intent(this, FormCadastro::class.java)
             startActivity(intent)
         }
 
