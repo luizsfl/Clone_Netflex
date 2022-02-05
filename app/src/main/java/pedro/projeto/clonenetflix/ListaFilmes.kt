@@ -6,10 +6,14 @@ import android.os.Bundle
 import android.os.PersistableBundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.GridLayout
+import androidx.recyclerview.widget.GridLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import pedro.projeto.clonenetflex.R
 import pedro.projeto.clonenetflex.databinding.ActivityFormLoginBinding
 import pedro.projeto.clonenetflex.databinding.ActivityListaFilmesBinding
+import pedro.projeto.clonenetflix.Adapter.FilmesAdapter
+import pedro.projeto.clonenetflix.Modal.addFilmes
 import java.text.Normalizer
 
 class ListaFilmes : AppCompatActivity() {
@@ -23,7 +27,9 @@ class ListaFilmes : AppCompatActivity() {
         binding = ActivityListaFilmesBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
+        val recycle_filmes = binding.recycleview
+        recycle_filmes.adapter = FilmesAdapter(addFilmes())
+        recycle_filmes.layoutManager = GridLayoutManager(applicationContext,3)
 
     }
 
