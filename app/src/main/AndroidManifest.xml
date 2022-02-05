@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Clone_Netflex">
-        <activity android:name="pedro.projeto.clonenetflix.ListaFilmes"></activity>
+        <activity android:name="pedro.projeto.clonenetflix.DetalhesFilme"></activity>
+        <activity android:name="pedro.projeto.clonenetflix.ListaFilmes" />
         <activity android:name="pedro.projeto.clonenetflix.FormCadastro" />
         <activity android:name="pedro.projeto.clonenetflix.FormLogin" />
         <activity android:name="pedro.projeto.clonenetflix.MainActivity">
