@@ -6,7 +6,9 @@ import android.os.Bundle
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import pedro.projeto.clonenetflex.R
 import pedro.projeto.clonenetflex.databinding.ActivityFormLoginBinding
 import pedro.projeto.clonenetflex.databinding.ActivityMainBinding
@@ -25,6 +27,8 @@ class FormLogin : AppCompatActivity() {
 
         supportActionBar!!.hide()
 
+        VerificarUserLogado()
+
         binding.txtTelaCadastro.setOnClickListener{
             val intent = Intent(this, FormCadastro::class.java)
             startActivity(intent)
@@ -40,10 +44,7 @@ class FormLogin : AppCompatActivity() {
             }else{
                 AutenticarUsuário(email,senha,mernsagem_erro)
             }
-
         }
-
-
     }
     private fun AutenticarUsuário(email:String,senha:String,mernsagem_erro:TextView){
         FirebaseAuth.getInstance().signInWithEmailAndPassword(email,senha).addOnCompleteListener {
@@ -51,14 +52,28 @@ class FormLogin : AppCompatActivity() {
               Toast.makeText(this,"Login efetuado com sucesso",Toast.LENGTH_SHORT).show()
               IrParaTelaFilmes()
           }else{
-              mernsagem_erro.setText("Erro ao tentar logar"+it)
+              var erro = it
+
+              when {
+                  erro is FirebaseAuthInvalidCredentialsException -> mernsagem_erro.setText("E-mail ou senha estão incorretos")
+                  erro is FirebaseNetworkException -> mernsagem_erro.setText("Sem conexão com internet")
+                  else -> mernsagem_erro.setText("Erro ao tentar logar"+it)
+
+              }
           }
+        }
+    }
+
+    private fun VerificarUserLogado(){
+        val usuarioLogado = FirebaseAuth.getInstance().currentUser
+        if(usuarioLogado!=null){
+            IrParaTelaFilmes()
         }
     }
 
     private fun IrParaTelaFilmes(){
         val intent = Intent(this,ListaFilmes::class.java)
         startActivity(intent)
-       // finish()
+        finish()
     }
 }
